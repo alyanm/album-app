@@ -22,6 +22,13 @@ export class AlbumService {
       .pipe(catchError(this.handleError<Album[]>('getAlbums', [])));
   }
 
+  getAlbum(id: number): Observable<Album> {
+    const url = `${this.albumsUrl}/${id}`;
+    return this.http
+      .get<Album>(url)
+      .pipe(catchError(this.handleError<Album>(`getAlbum id=${id}`)));
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);

@@ -2,7 +2,9 @@
   <h2>Albums</h2>
   <ul>
     <li *ngFor="let album of albums">
-      {{ album.title }} by {{ album.artist }}
+      <a [routerLink]="['/albums', album.id]">
+        {{ album.title }} by {{ album.artist }}
+      </a>
     </li>
   </ul>
 </div>

@@ -1,1 +1,8 @@
-<p>album-detail works!</p>
+<div *ngIf="album; else noAlbum">
+  <h2>{{ album.title }}</h2>
+  <p>by {{ album.artist }}</p>
+  <p>Price: ${{ album.price }}</p>
+</div>
+<ng-template #noAlbum>
+  <p>No album found</p>
+</ng-template>

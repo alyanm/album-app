@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { AlbumService } from '../album.service';
 import { Album } from '../album';
 import { CommonModule } from '@angular/common';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-album-list',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './album-list.component.html',
   styleUrls: ['./album-list.component.css'],
   standalone: true,
