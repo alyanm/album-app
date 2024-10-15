@@ -1,1 +1,11 @@
-<p>album-list works!</p>
+<div *ngIf="albums.length > 0; else noAlbums">
+  <h2>Albums</h2>
+  <ul>
+    <li *ngFor="let album of albums">
+      {{ album.title }} by {{ album.artist }}
+    </li>
+  </ul>
+</div>
+<ng-template #noAlbums>
+  <p>No albums found</p>
+</ng-template>
