@@ -1,24 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlbumService } from '../album.service';
 import { Album } from '../album';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-album-list',
-  standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],
   templateUrl: './album-list.component.html',
-  styleUrl: './album-list.component.css',
+  styleUrls: ['./album-list.component.css'],
+  standalone: true,
 })
-export class AlbumListComponent {
+export class AlbumListComponent implements OnInit {
   albums: Album[] = [];
+  errorMessage: string = '';
 
   constructor(private albumService: AlbumService) {}
 
-  ngOnInit() {
-    this.albumService.getAlbums().subscribe((albums) => {
-      this.albums = albums;
+  ngOnInit(): void {
+    this.getAlbums();
+  }
+
+  getAlbums(): void {
+    this.albumService.getAlbums().subscribe({
+      next: (albums) => (this.albums = albums),
+      error: (error) => (this.errorMessage = 'Failed to load albums'),
     });
   }
 }

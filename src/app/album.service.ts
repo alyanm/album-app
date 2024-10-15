@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { catchError, Observable } from 'rxjs';
+import { catchError, Observable, of } from 'rxjs';
 import { Album } from './album';
 
 @Injectable({
@@ -22,13 +22,10 @@ export class AlbumService {
       .pipe(catchError(this.handleError<Album[]>('getAlbums', [])));
   }
 
-  handleError<T>(
-    arg0: string,
-    arg1: never[]
-  ): (
-    err: any,
-    caught: Observable<Album[]>
-  ) => import('rxjs').ObservableInput<any> {
-    throw new Error('Method not implemented.');
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(`${operation} failed: ${error.message}`);
+      return of(result as T);
+    };
   }
 }
