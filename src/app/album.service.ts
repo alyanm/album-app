@@ -29,6 +29,12 @@ export class AlbumService {
       .pipe(catchError(this.handleError<Album>(`getAlbum id=${id}`)));
   }
 
+  addAlbum(album: Album): Observable<Album> {
+    return this.http
+      .post<Album>(this.albumsUrl, album, this.httpOptions)
+      .pipe(catchError(this.handleError<Album>('addAlbum')));
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);

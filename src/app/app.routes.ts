@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { AlbumListComponent } from './album-list/album-list.component';
-import { AlbumDetailComponent } from './album-detail/album-detail.component';
 
 export const routes: Routes = [
   { path: '', component: AlbumListComponent },
@@ -9,6 +8,13 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./album-detail/album-detail.component').then(
         (m) => m.AlbumDetailComponent
+      ),
+  },
+  {
+    path: 'add-album',
+    loadComponent: () =>
+      import('./album-form/album-form.component').then(
+        (m) => m.AlbumFormComponent
       ),
   },
 ];

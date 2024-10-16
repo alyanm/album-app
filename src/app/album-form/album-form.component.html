@@ -1,1 +1,16 @@
-<p>album-form works!</p>
+<h2>Add New Album</h2>
+<form [formGroup]="albumForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" />
+  </div>
+  <div>
+    <label for="artist">Artist:</label>
+    <input id="artist" formControlName="artist" />
+  </div>
+  <div>
+    <label for="price">Price:</label>
+    <input id="price" formControlName="price" />
+  </div>
+  <button type="submit" [disabled]="albumForm.invalid">Add Album</button>
+</form>
