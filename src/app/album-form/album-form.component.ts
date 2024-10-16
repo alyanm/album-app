@@ -27,12 +27,20 @@ export class AlbumFormComponent {
     this.albumForm = this.fb.group({
       title: ['', Validators.required],
       artist: ['', Validators.required],
-      price: ['', Validators.required],
+      price: [
+        '',
+        [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
+      ], // Ensure price is a valid number
     });
   }
 
   onSubmit(): void {
-    const album = this.albumForm.value;
+    console.log('Form submitted', this.albumForm.valid);
+    const formValue = this.albumForm.value;
+    const album = {
+      ...formValue,
+      price: parseFloat(formValue.price),
+    };
     this.albumService.addAlbum(album).subscribe({
       next: () => console.log('Album added'),
       error: (error) => console.error('Failed to add album', error),

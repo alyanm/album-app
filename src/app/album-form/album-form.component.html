@@ -1,8 +1,8 @@
 <h2>Add New Album</h2>
 <form [formGroup]="albumForm" (ngSubmit)="onSubmit()">
   <div>
-    <label for="name">Name:</label>
-    <input id="name" formControlName="name" />
+    <label for="title">Title:</label>
+    <input id="title" formControlName="title" />
   </div>
   <div>
     <label for="artist">Artist:</label>
@@ -12,5 +12,5 @@
     <label for="price">Price:</label>
     <input id="price" formControlName="price" />
   </div>
-  <button type="submit" [disabled]="albumForm.invalid">Add Album</button>
+  <button type="submit" [disabled]="!albumForm.valid">Add Album</button>
 </form>
