@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { v4 as uuidv4 } from 'uuid'; // Import the UUID library
 import { AlbumService } from '../album.service';
 
 @Component({
@@ -38,6 +39,7 @@ export class AlbumFormComponent {
     console.log('Form submitted', this.albumForm.valid);
     const formValue = this.albumForm.value;
     const album = {
+      id: uuidv4(),
       ...formValue,
       price: parseFloat(formValue.price),
     };
