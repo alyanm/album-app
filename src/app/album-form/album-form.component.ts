@@ -6,14 +6,14 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { v4 as uuidv4 } from 'uuid'; // Import the UUID library
 import { AlbumService } from '../album.service';
 
 @Component({
   selector: 'app-album-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './album-form.component.html',
   styleUrls: ['./album-form.component.css'],
 })
