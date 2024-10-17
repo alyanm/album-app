@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { Album } from '../album';
-import { ActivatedRoute } from '@angular/router';
-import { AlbumService } from '../album.service';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Album } from '../album';
+import { AlbumService } from '../album.service';
 
 @Component({
   selector: 'app-album-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './album-detail.component.html',
-  styleUrl: './album-detail.component.css',
+  styleUrls: ['./album-detail.component.css'],
 })
 export class AlbumDetailComponent {
   album: Album | undefined;
@@ -30,6 +30,20 @@ export class AlbumDetailComponent {
     this.albumService.getAlbum(id).subscribe({
       next: (album) => (this.album = album),
       error: (error) => (this.errorMessage = 'Failed to load album'),
+    });
+  }
+
+  deleteAlbum(id: number | undefined): void {
+    if (!id) {
+      console.error('Album ID is not defined');
+      return;
+    }
+
+    this.albumService.deleteAlbum(id).subscribe({
+      next: () => {
+        console.log('Album deleted');
+      },
+      error: (error) => console.error('Failed to delete album', error),
     });
   }
 }

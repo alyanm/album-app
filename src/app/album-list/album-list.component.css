@@ -9,3 +9,9 @@ li {
   background-color: #f9f9f9;
   border: 1px solid #ddd;
 }
+
+li button.delete_button {
+  background-color: #f44336;
+  color: white;
+  float: right;
+}

@@ -5,6 +5,13 @@
       <a [routerLink]="['/albums', album.id]">
         {{ album.title }} by {{ album.artist }}
       </a>
+      <button
+        class="delete_button"
+        type="button"
+        (click)="deleteAlbum(album.id)"
+      >
+        Delete
+      </button>
     </li>
   </ul>
 </div>

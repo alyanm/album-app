@@ -27,4 +27,13 @@ export class AlbumListComponent implements OnInit {
       error: (error) => (this.errorMessage = 'Failed to load albums'),
     });
   }
+
+  deleteAlbum(id: number): void {
+    this.albumService.deleteAlbum(id).subscribe({
+      next: () => {
+        this.albums = this.albums.filter((album) => album.id !== id);
+      },
+      error: (error) => console.error('Failed to delete album', error),
+    });
+  }
 }

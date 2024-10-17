@@ -3,6 +3,10 @@
   <p>by {{ album.artist }}</p>
   <p>Price: ${{ album.price }}</p>
 </div>
+<button type="button" [routerLink]="['']">Back to Albums</button>
+<button class="delete_button" type="button" (click)="deleteAlbum(album?.id)">
+  Delete
+</button>
 <ng-template #noAlbum>
   <p>No album found</p>
 </ng-template>

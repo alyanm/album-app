@@ -31,7 +31,7 @@ export class AlbumFormComponent {
       price: [
         '',
         [Validators.required, Validators.pattern(/^\d+(\.\d{1,2})?$/)],
-      ], // Ensure price is a valid number
+      ], // Ensure price is a valid decimal number
     });
   }
 
