@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Album } from '../album';
 import { AlbumService } from '../album.service';
 
@@ -17,7 +17,8 @@ export class AlbumDetailComponent {
 
   constructor(
     private albumService: AlbumService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +43,8 @@ export class AlbumDetailComponent {
     this.albumService.deleteAlbum(id).subscribe({
       next: () => {
         console.log('Album deleted');
+        // Redirect to the album list
+        this.router.navigate(['']);
       },
       error: (error) => console.error('Failed to delete album', error),
     });
