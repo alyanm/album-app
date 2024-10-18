@@ -6,6 +6,13 @@
         {{ album.title }} by {{ album.artist }}
       </a>
       <button
+        class="edit_button"
+        type="button"
+        [routerLink]="['/edit-album', album.id]"
+      >
+        Edit
+      </button>
+      <button
         class="delete_button"
         type="button"
         (click)="deleteAlbum(album.id)"

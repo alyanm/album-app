@@ -17,4 +17,11 @@ export const routes: Routes = [
         (m) => m.AlbumFormComponent
       ),
   },
+  {
+    path: 'edit-album/:id',
+    loadComponent: () =>
+      import('./album-edit/album-edit.component').then(
+        (m) => m.AlbumEditComponent
+      ),
+  },
 ];

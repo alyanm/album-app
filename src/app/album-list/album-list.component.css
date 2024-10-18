@@ -10,8 +10,19 @@ li {
   border: 1px solid #ddd;
 }
 
+li button {
+  float: right;
+  margin-right: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 li button.delete_button {
   background-color: #f44336;
   color: white;
-  float: right;
+}
+
+li button.edit_button {
+  background-color: #a2f869;
+  color: black;
 }

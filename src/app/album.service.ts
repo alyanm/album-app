@@ -42,6 +42,13 @@ export class AlbumService {
       .pipe(catchError(this.handleError<Album>('deleteAlbum')));
   }
 
+  updateAlbum(album: Album): Observable<any> {
+    const url = `${this.albumsUrl}/${album.id}`;
+    return this.http
+      .put(url, album, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('updateAlbum')));
+  }
+
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(`${operation} failed: ${error.message}`);
